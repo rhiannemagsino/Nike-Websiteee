@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nike Store - Home</title>
+  <style>
+   :root {
+  --primary: #121212;
+  --accent: #ffffff;
+  --text: #ffffff;
+  --muted: #bbbbbb;
+  --card-bg: #1a1a1a;
+  --hover: #6889a0;
+  --glow: #556481;
+}
+ 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+ 
+body {
+  background: var(--primary);
+  color: var(--text);
+  overflow-x: hidden;
+}
+ 
+nav {
+  width: 100%;
+  background: #363535;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+ 
+.logo {
+  font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+ 
+nav ul {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+  align-items: center;
+}
+ 
+nav ul li a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: 0.3s;
+  cursor: pointer;
+}
+ 
+nav ul li a:hover {
+  color: var(--hover);
+}
+ 
+#signin-btn {
+  background: none;
+  color: inherit;
+  padding: 0;
+  border: none;
+  font-weight: normal;
+  cursor: pointer;
+}
+.banner {
+  position: relative;
+  width: 100%;
+  height: 420px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+ 
+.banner-img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  filter: brightness(0.6);
+}
+ 
+.banner-content {
+  position: relative;
+  z-index: 1;
+  padding: 40px 20px;
+  color: white;
+}
+ 
+.banner-content h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.7);
+}
+ 
+.banner-content p {
+  font-size: 1.2rem;
+  color: #ccc;
+}
+ 
+.section {
+  max-width: 1400px;
+  margin: 60px auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: stretch;
+  gap: 40px;
+  overflow: visible;
+}
+ 
+.image-box {
+  flex: 0.5;
+  background: var(--card-bg);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  transition: 0.4s ease;
+}
+ 
+.image-box:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 20px var(--glow), 0 0 40px var(--glow);
+}
+ 
+.image-box img {
+  max-height: 107%;
+  width: auto;
+  max-width: 107%;
+  object-fit: contain;
+  border-radius: 12px;
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+ 
+.image-box:hover img {
+  transform: scale(1.1);
+}
+ 
+.section-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+ 
+.section h2 {
+  text-align: left;
+  font-size: 2.2rem;
+  margin-bottom: 30px;
+  color: var(--hover);
+}
+ 
+.products {
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  overflow: visible;
+  position: relative;
+  z-index: 1;
+}
+ 
+.product {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  transition: 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: default;
+  position: relative;
+  z-index: 2;
+}
+ 
+.product:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 25px var(--glow), 0 0 50px var(--glow);
+}
+ 
+.product img {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+ 
+.product p {
+  font-size: 1.1rem;
+  color: var(--muted);
+  font-weight: 600;
+  margin-bottom: 10px;
+  flex-grow: 1;
+}
+ 
+.add-to-cart-btn {
+  padding: 10px 20px;
+  background: var(--hover);
+  color: black;
+  font-weight: 700;
+  border: none;
+  border-radius: 25px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+ 
+.add-to-cart-btn:hover {
+  background: var(--glow);
+  color: white;
+}
+ 
+.about {
+  background: var(--card-bg);
+  padding: 50px 30px;
+  border-radius: 20px;
+  text-align: center;
+  margin-top: 70px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+ 
+.about h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: var(--hover);
+}
+ 
+.about p {
+  font-size: 1rem;
+  color: var(--muted);
+  max-width: 800px;
+  margin: auto;
+  line-height: 1.6;
+}
+ 
+footer {
+  background: #0a0a0a;
+  padding: 20px;
+  text-align: center;
+  color: #888;
+  font-size: 0.9rem;
+  border-top: 1px solid #222;
+  margin-top: 60px;
+}
+ 
+.socials a {
+  margin: 0 10px;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+ 
+.socials a:hover {
+  color: var(--hover);
+}
+ 
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #163d5f;
+  color: white;
+  padding: 20px 40px;
+  border-radius: 15px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  z-index: 9999;
+  display: none;
+  border: 2px solid var(--glow);
+  box-shadow: 0 0 20px var(--glow), 0 0 40px var(--glow);
+  animation: fadein 0.3s ease-out, fadeout 0.5s ease-in 2s forwards;
+}
+ 
+@keyframes fadein {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+ 
+@keyframes fadeout {
+  to { opacity: 0; }
+}
+ 
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+ 
+.modal {
+  background: #111;
+  color: #fff;
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 0 30px var(--glow), 0 0 60px var(--glow);
+  border: 2px solid var(--glow);
+  animation: fadein 0.5s ease-out;
+}
+ 
+.modal h2 {
+  font-size: 2rem;
+  color: var(--hover);
+  margin-bottom: 20px;
+}
+ 
+.modal p {
+  font-size: 1rem;
+  color: var(--muted);
+  margin-bottom: 30px;
+}
+ 
+.modal button {
+  padding: 10px 24px;
+  font-size: 1rem;
+  background: var(--hover);
+  color: black;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+ 
+.modal button:hover {
+  background: var(--glow);
+  color: white;
+}
+ 
+.search-btn {
+  background-color: transparent;
+  color: #ffffff;
+  border: 2px solid #fffafa;
+  padding: 8px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+ 
+.search-btn:hover {
+  background-color: #f0f0f0;
+  border-color: #000;
+  color: #000;
+}
+ 
+@media (max-width: 992px) {
+  .section {
+    flex-direction: column;
+    align-items: center;
+  }
+ 
+  .image-box {
+    height: auto;
+  }
+ 
+  .section-text {
+    width: 100%;
+    text-align: center;
+  }
+ 
+  .section h2 {
+    text-align: center;
+  }
+ 
+  .products {
+    height: auto;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+ 
+@media (max-width: 768px) {
+  .banner h1 {
+    font-size: 2.5rem;
+  }
+ 
+  .banner p {
+    font-size: 1rem;
+  }
+ 
+  .products {
+    grid-template-columns: 1fr;
+  }
+}
+ 
+@media (max-width: 480px) {
+  .banner h1 {
+    font-size: 2rem;
+  }
+ 
+  .banner p {
+    font-size: 0.9rem;
+  }
+}
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: white;
+}
+ 
+.logo-img {
+  width: 60px; /* adjust as needed */
+  height: auto;
+  margin-right: 10px;
+}
+ 
+ 
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: #000; /* Black background */
+  color: #fff; /* White text */
+}
+ 
+.footer-links {
+  display: flex;
+  justify-content: space-around;
+  width: 80%;
+  flex-wrap: wrap;
+  padding: 20px 0;
+}
+ 
+.footer-column {
+  flex: 1;
+  min-width: 200px;
+  text-align: center;
+}
+ 
+.footer-column h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+ 
+.footer-column a {
+  display: block;
+  color: #f7f7fa; /* Light grey links */
+  text-decoration: none;
+  margin: 5px 0;
+}
+ 
+.footer-column a:hover {
+  color: #7d9dc3; /* Brighter on hover */
+}
+ 
+.footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+ 
+.footer-social img {
+  width: 30px;
+  height: 30px;
+}
+ 
+.footer-bottom {
+  text-align: center;
+  padding: 15px 0;
+  border-top: 1px solid #000000; /* Light border */
+  width: 100%;
+}
+ 
+.footer-bottom-links {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+ 
+.footer-bottom-links a {
+  color: #ccc;
+  text-decoration: none;
+}
+ 
+.footer-bottom-links a:hover {
+  color: #f4f4f4;
+ 
+}
+.video-hero {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+ 
+.youtube-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none; /* so clicks pass through */
+}
+ 
+.youtube-background video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+ 
+.video-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* darkens the video for better readability */
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+ 
+.video-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  color: white;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0 20px;
+}
+ 
+.video-content h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+}
+ 
+.video-content p {
+  font-size: 1.2rem;
+  margin-bottom: 25px;
+  font-weight: 300;
+}
+ 
+.hero-btn {
+  background: white;
+  color: #111;
+  padding: 12px 28px;
+  border-radius: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+ 
+.hero-btn:hover {
+  background: #f2f2f2;
+ 
+  }
+ 
+  </style>
+ 
+</head>
+<body>
+ 
+  <div class="popup" id="popup">🛒 Item added to cart!</div>
+ 
+  <div class="modal-overlay" id="shopModal">
+    <div class="modal">
+      <h2>Welcome to the Shop!👟</h2>
+      <p>Find your next favorite piece from our latest Nike collection. Ready?</p>
+      <button onclick="closeModal()">Let's go</button>
+    </div>
+  </div>
+ 
+  <nav>
+<div class="logo">
+  <img src="Logo_NIKE.svg" alt="Nike Logo" class="logo-img">
+  Nike Store
+</div>
+    <ul>
+      <li><a href="home.html">Home</a></li>
+      <li><a href="javascript:void(0)" onclick="openModal()">Shop</a></li>
+      <li><a href="signin.html" id="signin-btn">Sign In</a></li>
+      <li><a href="#findastore">Find a Store</a></li>
+      <li><a href="#Help">Help</a></li>
+      <li><a href="Join Us">Join Us</a></li>
+      <li><a href="#addtocart">🛒 Add to Cart</a></li>
+      <li><a href="#" class="search-btn">Search Us</a></li>
+    </ul>
+   
+  </nav>
+ 
+ <section class="banner">
+  <img src="nike banner.avif" alt="Banner Background" class="banner-img">
+  <div class="banner-content">
+    <h1>Elevate Your Look!</h1>
+    <p>Be ready for anything with the season’s newest style.</p>
+  </div>
+</section>
+ 
+  <div class="section">
+    <div class="image-box">
+      <img src="home2.png" alt="Left Nike" />
+    </div>
+ 
+    <div class="section-text">
+      <h2>Featured Products</h2>
+      <div class="products">
+        <div class="product"><img src="JACKET4.PNG" alt="Jacket"><p>Nike White Jacket</p><button class="add-to-cart-btn" onclick="showPopup()">Add to Cart</button></div>
+        <div class="product"><img src="SHIRT3.PNG" alt="Shirt"><p>Graphic Tee Shirt</p><button class="add-to-cart-btn" onclick="showPopup()">Add to Cart</button></div>
+        <div class="product"><img src="SHORT1.PNG" alt="Short"><p>Nike Gray Short</p><button class="add-to-cart-btn" onclick="showPopup()">Add to Cart</button></div>
+        <div class="product"><img src="NIKE ZA.png" alt="Shoe"><p>Nike ZA Shoe</p><button class="add-to-cart-btn" onclick="showPopup()">Add to Cart</button></div>
+        <div class="product"><img src="CAP1 (1).PNG" alt="Cap"><p>Blue Street Cap</p><button class="add-to-cart-btn" onclick="showPopup()">Add to Cart</button></div>
+        <div class="product"><img src="AURORA_DD1873-113_PHSLH001-2000.webp" alt="Aurora"><p>Nike Aurora Shoe</p><button class="add-to-cart-btn" onclick="showPopup()">Add to Cart</button></div>
+      </div>
+    </div>
+ 
+    <div class="image-box">
+      <img src="homeimg.png" alt="Right Nike" />
+    </div>
+  </div>
+ <section class="video-hero">
+  <div class="youtube-background">
+    <video autoplay loop muted width="100%">
+      <source src="nike-video.mp4.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+      </video>
+      <div>
+   
+      </div>
+  </div>
+  <div class="video-overlay"></div>
+  <div class="video-content">
+    <h1>Explore More on Nike</h1>
+    <p>Be ready for anything with the season’s newest style.</p>
+    <a href="shop.html" class="hero-btn">Shop Now</a>
+  </div>
+</section>
+  <section class="about">
+    <h2>Move, Shop, Customise & Celebrate With Us <h2>
+    <p>Discover the inspiring stories of athletes from around the globe and witness how Nike's unwavering commitment to innovation and excellence empowers individuals to unlock their true potential and achieve greatness.</p>
+  </section>
+ 
+  <footer>
+ <div class="footer-container">
+      <!-- Links -->
+ 
+      <div class="footer-links">
+        <div class="footer-column">
+              <h3>Resources</h3>
+ 
+          <a href="#">Find a Store</a>
+          <a href="#">Become a Member</a>
+          <a href="#">Running Shoe Finder</a>
+          <a href="#">Product Advice</a>
+          <a href="#">Education Discounts</a>
+          <a href="#">Send Us Feedback</a>
+ 
+ 
+        </div>
+ 
+        <div class="footer-column">
+              <h3>Help</h3>
+ 
+          <a href="#">Get Help</a>
+          <a href="#">Order Status</a>
+          <a href="#">Delivery</a>
+          <a href="#">Returns</a>
+          <a href="#">Payment Options</a>
+          <a href="#">Contact Us</a>
+        </div>
+        <div class="footer-column">
+              <h3>Company</h3>
+ 
+          <a href="#">About Nike</a>
+          <a href="#">News</a>
+          <a href="#">Careers</a>
+          <a href="#">Investors</a>
+          <a href="#">Suistainability</a>
+          <a href="#">Impact</a>
+          <a href="#">Report a Concern</a>
+        </div>
+      </div>
+ 
+      <!-- Social Media -->
+      <div class="footer-social">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter">
+        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
+        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube">
+      </div>
+    </div>
+ 
+    <div class="footer-bottom">
+  <p>© 2025 Nike, Inc. All rights reserved</p>
+  <div class="footer-bottom-links">
+    <a href="#">Guides</a>
+    <a href="#">Terms of Sale</a>
+    <a href="#">Terms of Use</a>
+    <a href="#">Nike Privacy Policy</a>
+  </div>
+</div>
+ 
+  </footer>
+  </footer>
+  <script>
+    function showPopup() {
+      const popup = document.getElementById("popup");
+      popup.style.display = "block";
+      setTimeout(() => {
+        popup.style.display = "none";
+      }, 2500);
+    }
+ 
+    function openModal() {
+      document.getElementById("shopModal").style.display = "flex";
+    }
+ 
+    function closeModal() {
+      document.getElementById("shopModal").style.display = "none";
+      window.location.href = "shop.html";
+    }
+  </script>
+</body>
+</html>
+ 
